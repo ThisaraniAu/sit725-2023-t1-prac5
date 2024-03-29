@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calaculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ebe0e0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1d1919;
+        }
+        
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 120px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="number"]:focus {
+            border-color: #66afe9;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            background-color: #561C24;
+            color: white;
+            padding: 14px 20px;
+            margin: 16px 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #b76f77;
+        }
+         /* Result display styles */
+         .result-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .result {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        /* Animation keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form method="get" action="/calculate">
+        <label for="num1">Enter Number 1:</label>
+        <input type="number" id="num1" name="num1"><br><br>
+      
+        <label for="num2">Enter Number 2:</label>
+        <input type="number" id="num2" name="num2"><br><br>
+        <input type="submit" value="ADD">
+    </form>
+</body>
+</html>
