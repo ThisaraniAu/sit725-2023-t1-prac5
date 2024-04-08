@@ -1,29 +1,50 @@
 const express=require('express') 
 const bodyparser=require('body-parser')
 const app=express()
-//thisarani
-app.use(bodyparser.urlencoded({extended:true}))
+
+app.use(express.static(__dirname+'/public'))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+
+//app.use(bodyparser.urlencoded({extended:true}))
 
 
-app.get('',(req,res)=>{
+/**app.get('',(req,res)=>{
     res.sendFile(__dirname+"/index.html")
+})**/
+
+//Define a GET endpoint to serve the card data
+
+app.get('/api/cards', (req, res) =>{
+    res.json({cards: cardList});
 })
 
-app.get('/calculate', (req, res) => {
-    const n1 = Number(req.query.num1);
-    const n2 = Number(req.query.num2);
-    const add = n1 + n2;
-    // Styling the result display
-    const resultHtml = `
-        <div class="result-container">
-            <h2 class="result">Result is: ${add}</h2>
-            <p>Message : Success</p>
-            <p>Status Code: 200</p>
-        </div>
-    `;
-    res.send(resultHtml);
-});
+const cardList =[
+    {
+        title:"Kitten 2",
+        image: "image/kitchen-2.jpg",
+        link: "About Kitten 2",
+        description:"Demo description about kitten 2"
 
-app.listen(3000,(res)=>{
-      console.log("Server Started :)")
+    },
+    {
+        title:"Kitten 3",
+        image: "image/kitchen-3.jpg",
+        link: "About Kitten 3",
+        description:"Demo description about kitten 3"
+
+    }
+
+]
+
+app.get('/api/projects',(req,res) =>{
+    res.json({statusCode:200, data: cardList, message:"Success"})
+})
+
+var port = process.env.port || 3000;
+
+
+
+app.listen(port,() =>{
+      console.log("App listening to: "+port)
 })
