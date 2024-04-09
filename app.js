@@ -1,10 +1,12 @@
 const express=require('express') 
 const bodyparser=require('body-parser')
+const cors = require('cors')
 const app=express()
 
 app.use(express.static(__dirname+'/public'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
+app.use(cors());
 
 //app.use(bodyparser.urlencoded({extended:true}))
 
@@ -22,17 +24,17 @@ app.get('/api/cards', (req, res) =>{
 const cardList =[
     {
         title:"Kitten 2",
-        image: "image/kitchen-2.jpg",
+        path: "image/1.webp",
         link: "About Kitten 2",
-        description:"Demo description about kitten 2"
-
+        description:"Demo description about kitten 2",
+        subTitle:"Kitten 2 Subtitle",
     },
     {
         title:"Kitten 3",
-        image: "image/kitchen-3.jpg",
+        path: "image/2.webp",
         link: "About Kitten 3",
-        description:"Demo description about kitten 3"
-
+        description:"Demo description about kitten 3",
+        subTitle:"Kitten 3 Subtitle",
     }
 
 ]
